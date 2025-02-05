@@ -36,9 +36,13 @@ namespace ArrayOfNumbers
     {
         private int[] _arrayOfNumbers;    // Private field integer Array 
 
-        // Constructor #1 
-        // Accepts integer param that specifies the size of the Array.
-        // Initialise all elements to zero.
+
+        /// <summary>
+        /// Constructor #1
+        /// Accepts integer param that specifies the size of the Array. 
+        /// Initialise all elements to zero.
+        /// </summary>
+        /// <param name="sizeOfArray">The integer value to create an array of this given size</param>
         public ArrayOfNumbers(int sizeOfArray)
         {
 
@@ -50,10 +54,13 @@ namespace ArrayOfNumbers
 
         }
 
-        // Constructor #2 
-        // Accepts array of integers as input and creates a copy of it for internal storage.
-        // Create a new array and copy each element.
-        // (Research difference, reference types - primitive (value) types first)
+
+        /// <summary>
+        /// Constructor #2 
+        /// Accepts array of integers as input and creates a copy of it for internal storage.
+        /// Create a new array and copy each element.
+        /// </summary>
+        /// <param name="arrayToCopy">The initial object reference</param>
         public ArrayOfNumbers(int[] arrayToCopy)
         {
 
@@ -65,12 +72,9 @@ namespace ArrayOfNumbers
 
         }
 
-        // Property  Get/Set
-        // Method to return element from array at specificed Index
-        // Method to set an element at specificed index to the given value
 
         /// <summary>
-        /// A Method to Return the value of an array index position
+        /// A Method to Return the value at a specificed index position.
         /// </summary>
         /// <param name="indexNumber">The index number</param>
         /// <returns>The integer value of the index number</returns>
@@ -79,8 +83,9 @@ namespace ArrayOfNumbers
             return _arrayOfNumbers[indexNumber];
         }
 
+
         /// <summary>
-        /// A Method to Set the value of an index in an array 
+        /// A Method to Set an element at the specificed index to the given value 
         /// </summary>
         /// <param name="indexNumber">The number of the index</param>
         /// <param name="value">The value you want to insert</param>
@@ -88,6 +93,7 @@ namespace ArrayOfNumbers
         {
             _arrayOfNumbers[indexNumber] = value;
         }
+
 
         /// <summary>
         /// A Method to Return the highest value in an array. It will loop through all indexs in the array
@@ -103,9 +109,11 @@ namespace ArrayOfNumbers
                     largest = _arrayOfNumbers[i];               // set var largest to that array index value
                 }
             }
+
             return largest;                                     
 
         }
+
 
         /// <summary>
         /// A Method to Return the GCD of two integers. The Method takes in two integer arguments and loops through
@@ -145,6 +153,7 @@ namespace ArrayOfNumbers
 
         }
 
+
         /// <summary>
         /// A Method to Return the array length 
         /// </summary>
@@ -153,6 +162,7 @@ namespace ArrayOfNumbers
         {
             return _arrayOfNumbers.Length;
         }
+
 
         /// <summary>
         /// A Method to Return the total of the array index values
@@ -171,6 +181,7 @@ namespace ArrayOfNumbers
             return sum;
         }
 
+
         /// <summary>
         /// A Method to Return the Average integer number in the array
         /// </summary>
@@ -185,13 +196,14 @@ namespace ArrayOfNumbers
 
         }
 
+
         /// <summary>
         /// A Method to Return entire array as a string
         /// </summary>
         /// <returns>The value of the array as a string</returns>
         public override string ToString()
         {
-            string[] value = { "," };
+            string[] value = { " ," };
 
             for (int i = 0; i < _arrayOfNumbers.Length; i++) {
                 value[_arrayOfNumbers.Length] += _arrayOfNumbers[i].ToString();   
@@ -202,31 +214,48 @@ namespace ArrayOfNumbers
         }
 
 
+        /// <summary>
+        /// A Method to Return the value of each element in the array when multiplied by a scalar value
+        /// </summary>
+        /// <param name="scalarValue">The number to multiply by</param>
+        /// <returns>The new value of the array index</returns>
+        public int ReturnScalarMultiply(int scalarValue)
+        {
+            // v = k x v
+            int value = 0;
+
+            for(int i = 0; i < _arrayOfNumbers.Length; i++) {   // Loop through and multiply each index value by the scalar value 
+                _arrayOfNumbers[i] *= scalarValue;
+                value = _arrayOfNumbers[i];
+
+            }
+
+            return value;
+
+        }
 
 
+        /// <summary>
+        /// A Method to Return the values of each element in the array after the constant has been added to it
+        /// </summary>
+        /// <returns>Returns the value of each new index value</returns>
+        public int ReturnAddConstant()
+        {
+            
+            const int constantValue = 10;  // A Constant is a var whose value cannot be changed after assignemnt
+            int value = 0;
+
+            for (int i = 0; i < _arrayOfNumbers.Length; i++) {
+                _arrayOfNumbers[i] += constantValue;
+                value = _arrayOfNumbers[i];
+
+            }
+
+            return value;
+
+        }
 
 
 
     }   //  EO ArrayOfNumbers class
-
-
-
-    /// <summary>
-    /// Example Text Here
-    /// </summary>
-    /// <param name="PARAMNAME"> Description of param: Description of validation:</param>
-
-
-    // DisplayAll() {
-    // Foreach loop
-    //}
-
-
-
-
-
-
-
-
-
 }   // EO namespace
