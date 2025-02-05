@@ -67,19 +67,48 @@ namespace ArrayOfNumbers
         // Method to return element from array at specificed Index
         // Method to set an element at specificed index to the given value
 
-        // Get
+        /// <summary>
+        /// A Method to Return the value of an array index position
+        /// </summary>
+        /// <param name="indexNumber"></param>
+        /// <returns></returns>
         public int ReturnElementValue(int indexNumber)
         {
             return _arrayOfNumbers[indexNumber];
         }
 
-        // Set
+        /// <summary>
+        /// A Method to Set the value of an index in an array 
+        /// </summary>
+        /// <param name="indexNumber"></param>
+        /// <param name="value"></param>
         public void SetElementValue(int indexNumber, int value)
         {
             _arrayOfNumbers[indexNumber] = value;
         }
 
+        /// <summary>
+        /// A Method to Return the highest value in an array. It will loop through all indexs in the array
+        /// and if its value is higher than the stored variable it will set that number to the new largest var number  
+        /// </summary>
+        /// <returns></returns>
+        public int ReturnLargestValue()
+        {
+            int largest = 0;
 
+            for(int i = 0; i < _arrayOfNumbers.Length; i++) {   // Loop through the array
+                if (_arrayOfNumbers[i] > largest) {             // If the index value is greater than var largest
+                    largest = _arrayOfNumbers[i];               // set var largest to that array index value
+                }
+            }
+            return largest;                                     
+
+        }
+
+        public int GCD(int elementA, int elementB)
+        {
+
+        }
 
 
     }   //  EO ArrayOfNumbers class
