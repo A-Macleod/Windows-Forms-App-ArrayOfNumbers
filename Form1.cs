@@ -70,8 +70,8 @@ namespace ArrayOfNumbers
         /// <summary>
         /// A Method to Return the value of an array index position
         /// </summary>
-        /// <param name="indexNumber"></param>
-        /// <returns></returns>
+        /// <param name="indexNumber">The index number</param>
+        /// <returns>The integer value of the index number</returns>
         public int ReturnElementValue(int indexNumber)
         {
             return _arrayOfNumbers[indexNumber];
@@ -80,8 +80,8 @@ namespace ArrayOfNumbers
         /// <summary>
         /// A Method to Set the value of an index in an array 
         /// </summary>
-        /// <param name="indexNumber"></param>
-        /// <param name="value"></param>
+        /// <param name="indexNumber">The number of the index</param>
+        /// <param name="value">The value you want to insert</param>
         public void SetElementValue(int indexNumber, int value)
         {
             _arrayOfNumbers[indexNumber] = value;
@@ -91,7 +91,7 @@ namespace ArrayOfNumbers
         /// A Method to Return the highest value in an array. It will loop through all indexs in the array
         /// and if its value is higher than the stored variable it will set that number to the new largest var number  
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The largest integer value in the array</returns>
         public int ReturnLargestValue()
         {
             int largest = 0;
@@ -105,6 +105,14 @@ namespace ArrayOfNumbers
 
         }
 
+        /// <summary>
+        /// A Method to Return the GCD of two integers. The Method takes in two integer arguments and loops through
+        /// the array object to find the index values of those integers. The values are then used in the GCD algorithm
+        /// and the GCD is returned
+        /// </summary>
+        /// <param name="elementA">the first element number</param>
+        /// <param name="elementB">the second element number</param>
+        /// <returns>The GCD of the values at index position A and B in the array</returns>
         public int GCD(int elementA, int elementB)
         {
 
@@ -134,6 +142,25 @@ namespace ArrayOfNumbers
             return a;   // Return the Greatest Common Divisor
 
         }
+
+        /// <summary>
+        /// A Method to Return the array length 
+        /// </summary>
+        /// <returns>The length of the array</returns>
+        public int ReturnCount()
+        {
+            return _arrayOfNumbers.Length;
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     }   //  EO ArrayOfNumbers class
