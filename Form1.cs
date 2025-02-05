@@ -24,12 +24,9 @@ namespace ArrayOfNumbers
 
         }
 
-    /// Add a ReadMe Doc.. week 3 notes
+        /// Add a ReadMe Doc.. week 3 notes
 
     }   // EO Form1 class
-
-
-
 
 
 
@@ -40,14 +37,13 @@ namespace ArrayOfNumbers
         // Constructor #1 
         // Accepts integer param that specifies the size of the Array.
         // Initialise all elements to zero.
-        public ArrayOfNumbers(int A)
+        public ArrayOfNumbers(int sizeOfArray)
         {
 
-            _arrayOfNumbers = new int[A];
+            _arrayOfNumbers = new int[sizeOfArray];
 
-            int X = 0;
-            for (int i = 0; i < A; i++) {
-                _arrayOfNumbers[i] = X;
+            for (int i = 0; i < sizeOfArray; i++) { // Loop through and set each index value to 0
+                _arrayOfNumbers[i] = 0;
             }
 
         }
@@ -56,7 +52,16 @@ namespace ArrayOfNumbers
         // Accepts array of integers as input and creates a copy of it for internal storage.
         // Create a new array and copy each element.
         // (Research difference, reference types - primitive (value) types first)
+        public ArrayOfNumbers(int[] arrayToCopy)
+        {
 
+            _arrayOfNumbers = new int[arrayToCopy.Length];  // Creates a new _arrayOfNumbers object using an arrayToCopys Length to determine its size
+
+            for (int i = 0; i < arrayToCopy.Length; i++) {  // Loop through and set the new array indexs to the same as the copied array 
+                _arrayOfNumbers[i] = arrayToCopy[i];
+            }
+
+        }
 
         // Property  Get/Set
         // Method to return element from array at specificed Index
@@ -86,7 +91,9 @@ namespace ArrayOfNumbers
     /// <param name="PARAMNAME"> Description of param: Description of validation:</param>
 
 
-
+    // DisplayAll() {
+    // Foreach loop
+    //}
 
 
 
