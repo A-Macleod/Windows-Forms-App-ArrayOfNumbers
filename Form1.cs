@@ -108,6 +108,31 @@ namespace ArrayOfNumbers
         public int GCD(int elementA, int elementB)
         {
 
+            int a = 0;
+            int b = 0;
+
+            for (int i = 0; i < _arrayOfNumbers.Length; ++i) {
+
+                  a = _arrayOfNumbers[elementA];
+                  b = _arrayOfNumbers[elementB];
+
+            }
+
+            while (a != b) {    // Euclids Algorithm 
+
+                if (a > b) {
+
+                    a = a - b;
+
+                } else {
+
+                    b = b - a;
+                }
+
+            }
+
+            return a;   // Return the Greatest Common Divisor
+
         }
 
 
