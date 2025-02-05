@@ -12,7 +12,7 @@ namespace ArrayOfNumbers
 {
     public partial class Form1 : Form
     {
-        private ArrayOfNumbers newArrayOfNumbers;   // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
+        //private ArrayOfNumbers newArrayOfNumbers;   // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
 
         public Form1()
         {
@@ -30,7 +30,7 @@ namespace ArrayOfNumbers
 
 
 
-    private class ArrayOfNumbers
+    public class ArrayOfNumbers
     {
         private int[] _arrayOfNumbers;    // Private field integer Array 
 
@@ -67,18 +67,19 @@ namespace ArrayOfNumbers
         // Method to return element from array at specificed Index
         // Method to set an element at specificed index to the given value
 
-        //public int[] ArrayOfInts()
-        //{
-        //    get
-        //        {
-        //        // Get logic in here
-        //    }
+        // Get
+        public int ReturnElementValue(int indexNumber)
+        {
+            return _arrayOfNumbers[indexNumber];
+        }
 
-        //    set
-        //        {
-        //        // Set logic in here
-        //    }
-        //}
+        // Set
+        public void SetElementValue(int indexNumber, int value)
+        {
+            _arrayOfNumbers[indexNumber] = value;
+        }
+
+
 
 
     }   //  EO ArrayOfNumbers class
