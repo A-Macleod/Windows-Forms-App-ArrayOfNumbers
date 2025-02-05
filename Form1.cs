@@ -29,7 +29,9 @@ namespace ArrayOfNumbers
     }   // EO Form1 class
 
 
-
+    /// <summary>
+    /// Represents a fixed size collection that can change its stored numbers and perform mathematic operations  
+    /// </summary>
     public class ArrayOfNumbers
     {
         private int[] _arrayOfNumbers;    // Private field integer Array 
@@ -152,10 +154,22 @@ namespace ArrayOfNumbers
             return _arrayOfNumbers.Length;
         }
 
+        /// <summary>
+        /// A Method to Return the total of the array index values
+        /// </summary>
+        /// <returns>The total sum of the array</returns>
+        public int ReturnSum()
+        {
+            int sum = 0;
 
+            for (int i = 0; i < _arrayOfNumbers.Length; i++) {
 
+                sum += _arrayOfNumbers[i];
 
+            }
 
+            return sum;
+        }
 
 
 
