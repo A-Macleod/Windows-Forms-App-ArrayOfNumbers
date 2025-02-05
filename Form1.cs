@@ -171,6 +171,36 @@ namespace ArrayOfNumbers
             return sum;
         }
 
+        /// <summary>
+        /// A Method to Return the Average integer number in the array
+        /// </summary>
+        /// <returns>The average integer value, average = total / count </returns>
+        public int ReturnAverage()
+        {
+            int count = ReturnCount();
+            int total = ReturnSum();
+            int average = total / count ;
+            
+            return average;
+
+        }
+
+        /// <summary>
+        /// A Method to Return entire array as a string
+        /// </summary>
+        /// <returns>The value of the array as a string</returns>
+        public override string ToString()
+        {
+            string[] value = { "," };
+
+            for (int i = 0; i < _arrayOfNumbers.Length; i++) {
+                value[_arrayOfNumbers.Length] += _arrayOfNumbers[i].ToString();   
+            }
+
+            return value.ToString();
+
+        }
+
 
 
 
