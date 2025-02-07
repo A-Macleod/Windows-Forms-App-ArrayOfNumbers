@@ -16,9 +16,9 @@ namespace ArrayOfNumbers
     /// </summary>
     public partial class Form1 : Form
     {
-        private ArrayOfNumbers newArray;        // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
-        private ArrayOfNumbers newArrayCopy;    // 
-        private int buttonNumber = 0;           //
+        private ArrayOfNumbers newArray;        // declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
+        private ArrayOfNumbers newArrayCopy;    // declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
+        private int buttonNumber = 0;           // integer variable to store which GUI button was pressed 
 
         public Form1()
         {
@@ -39,8 +39,9 @@ namespace ArrayOfNumbers
   
         }
 
+
         /// <summary>
-        /// A Method to putput user directions into TextBox2 and to set the buttonNumber variable to 2.
+        /// A Method to output user directions into TextBox2 and to set the buttonNumber variable to 2.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -49,6 +50,32 @@ namespace ArrayOfNumbers
 
             buttonNumber = 2;
             textBox2.Text = $"[2] Are you sure you want to COPY the array? Type YES, then click ENTER.. ";
+
+        }
+
+
+        /// <summary>
+        /// A Method to output user directions into TextBox2 and to set the buttonNumber variable to 3 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            buttonNumber = 3;
+            textBox2.Text = $"[3] Are you sure you want to DELETE the array COPY? Type DELETE, then click ENTER.. ";
+
+        }
+
+
+        /// <summary>
+        /// A Method to output user directions into TextBox2 and to set the button Number variable to 4
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            buttonNumber = 4;
+            textBox2.Text = $"[4] Enter ORIGINAL or COPY to select which array to show the Largest value from, then press Enter.";
 
         }
 
@@ -64,7 +91,7 @@ namespace ArrayOfNumbers
 
         /// <summary>
         /// A Method that contains a switch statement. The switch will run the operation number depending on the button value
-        /// that was pressed on the GUI. Each operation button has its own number value.
+        /// that was pressed on the GUI. Each operation button has its own number value that coresponds to its switch operation.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,54 +102,128 @@ namespace ArrayOfNumbers
                 case 0:
                 break;
 
-                case 1:
+                // Create Array
+                case 1: 
                 
                     int result = 0;
                     bool isValid ;
 
+                    string input = textBox1.Text;
+                    isValid = int.TryParse(input, out result);
 
-                        string input = textBox1.Text;
-                        isValid = int.TryParse(input, out result);
-
-                        if (isValid && result > 0) {
+                    if (isValid && result > 0) {
                             
-                            // If Methods do not work, remove the ArrayOfNumbers before "newArray"
-                            newArray = new ArrayOfNumbers(result);
-                            textBox2.Text = $"New array created. The array is {result} indices long.";
-                            buttonNumber = 0;
+                        // If Methods do not work, remove the ArrayOfNumbers before "newArray"
+                        newArray = new ArrayOfNumbers(result);
+                        textBox2.Text = $"New array created. The array is {result} indices long.";
+                        buttonNumber = 0;
+                        clearTextBox();
+
+                    } else {
+
+                        textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
+                        clearTextBox();
+
+                    }
+
+                break;
+
+
+                // Copy Array
+                case 2:
+
+                    if(newArray != null) {
+
+                        if (textBox1.Text == "YES") {
+
+                            newArrayCopy = new ArrayOfNumbers(newArray.Array);
+                            textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
                             clearTextBox();
 
                         } else {
 
-                            textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
+                            textBox2.Text = $"Please Enter YES to copy the array, othewise choose another option.";
                             clearTextBox();
 
                         }
 
+                    } else {
+
+                        clearTextBox();
+                        textBox2.Text = $"There is NO ARRAY to Copy, Please select another option.";
+
+                    }
+
+                break;
+
+
+                // Delete Array
+                case 3:
+
+                    if(newArrayCopy != null) {
+
+                        if (textBox1.Text == "DELETE") {
+
+                            newArrayCopy = null;
+                            textBox2.Text = $"ARRAY COPY DELETED..";
+                            clearTextBox();
+
+                        } else {
+
+                            textBox2.Text = $"Please Enter DELETE to remove the array, othewise choose another option.";
+                            clearTextBox();
+
+                        }
+
+                    } else {
+
+                        clearTextBox();
+                        textBox2.Text = $"There is NO COPY to Delete, Please select another option.";
+
+                    }
+
                 break;
 
 
-                case 2:
+                // Return Largest value in Array
+                case 4:
 
-                if(textBox1.Text == "YES") {
+                    if (newArray != null && newArrayCopy != null) {
 
-                    ArrayOfNumbers newArrayCopy = new ArrayOfNumbers(newArray.Array);
-                    textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
-                    clearTextBox();
+                        if (textBox1.Text == "ORIGINAL") {
 
-                } else {
+                            textBox2.Text = $"The Largest value is {newArray.ReturnLargestValue().ToString()}";
+                            clearTextBox();
 
-                    textBox2.Text = $"Please Enter YES to copy the array, else choose another option.";
-                    clearTextBox();
-                        
-                }
+                        } else if (textBox1.Text == "COPY") {
+
+                            textBox2.Text = $"The Largest value is {newArrayCopy.ReturnLargestValue().ToString()}";
+                            clearTextBox();
+
+                        } else {
+
+                            textBox2.Text = $"Please Enter either ORIGINAL or COPY then press ENTER, or select another option.";
+
+                        }
+
+                        textBox2.Text = $"Please Create array before returning Largest or choose another option.";
+
+                    }
+
+                //textBox2.Text = $"The Largest value in the array is : {newArray.ReturnLargestValue()} .";
 
                 break;
+
+
+
 
                 default:
                 break;
             }
         }
+
+
+
 
 
 
