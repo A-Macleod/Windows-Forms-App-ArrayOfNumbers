@@ -17,7 +17,7 @@ namespace ArrayOfNumbers
     public partial class Form1 : Form
     {
         private ArrayOfNumbers newArray;   // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
-        
+        private int buttonNumber = 0;
 
         public Form1()
         {
@@ -34,27 +34,32 @@ namespace ArrayOfNumbers
         private void button1_Click(object sender, EventArgs e)
         {
 
-            try {
+            buttonNumber = 1;
+            textBox2.Text = $"[1] Please Enter a Number for the Array Size, then click ENTER..";
 
-                string input = textBox1.Text;
-                int result = int.Parse(input);
+            //try {
 
-                if (result > 0) {
+            //    string input = textBox1.Text;
+            //    int result = int.Parse(input);
 
-                    newArray = new ArrayOfNumbers(result);
-                    textBox2.Text = $"New Array of size '{result}' Created.";
-                    clearTextBox();
+            //    if (result > 0) {
 
-                } else {
-                    textBox2.Text = $"Please Enter a Number for the Array Size that is Greater than 0";
-                }
+            //        newArray = new ArrayOfNumbers(result);
+            //        textBox2.Text = $"New Array of size '{result}' Created.";
+            //        clearTextBox();
+
+            //    } else {
+            //        textBox2.Text = $"Please Enter a Number for the Array Size that is Greater than 0";
+            //        clearTextBox();
+            //    }
 
 
-            } catch (Exception ex) {
+            //} catch (Exception ex) {
 
-                textBox2.Text = $"Please Enter a Number for the Array Size, then press ENTER.. + {ex.Message}";
+            //    textBox2.Text = $"Please Enter a Number for the Array Size, then press ENTER.. + {ex.Message}";
+            //    clearTextBox();
 
-            }
+            //}
   
         }
 
@@ -68,16 +73,55 @@ namespace ArrayOfNumbers
         }
 
 
+        /// <summary>
+        /// A Method that contains a switch statement. The switch will run the operation number depending on the button value
+        /// that was pressed on the GUI. Each operation button has its own number value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Enter_Click(object sender, EventArgs e)
+        {
+            switch (buttonNumber) {
+                case 0:
+                break;
 
 
-    
-
-        /// Add a ReadMe Doc.. week 3 notes
-
-
-
+                case 1:
+                
+                int result = 0;
+                bool isValid ;
 
 
+                    string input = textBox1.Text;
+                    isValid = int.TryParse(input, out result);
+
+                    if (isValid && result > 0) {
+
+                        newArray = new ArrayOfNumbers(result);
+                        textBox2.Text = $"New Array Created. The Array is {result} indices long.";
+                        buttonNumber = 0;
+                        clearTextBox();
+
+                    } else {
+
+                        textBox2.Text = $"Please Enter a Number for the Array Size that is Greater than 0, then press ENTER..";
+                        clearTextBox();
+
+                    }
+
+                break;
+
+
+                case 2:
+                break;
+
+                default:
+                break;
+            }
+        }
+
+
+            /// Add a ReadMe Doc.. week 3 notes
 
 
 
@@ -97,7 +141,12 @@ namespace ArrayOfNumbers
 
 
 
-    }   // EO Form1 class
+
+
+
+
+
+        }   // EO Form1 class
 
 
     /// <summary>

@@ -149,8 +149,8 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(628, 111);
             this.textBox2.TabIndex = 12;
-            this.textBox2.Text = "ArrayOfNumbers Application.\r\n\r\nInsert the size of the array you want to create in" +
-    " a numeric value, then press ENTER..";
+            this.textBox2.Text = "ArrayOfNumbers Application.\r\n\r\nPress the operation you want to carry out, then fo" +
+    "llow the on screen instructions..";
             // 
             // Enter
             // 
