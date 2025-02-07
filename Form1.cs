@@ -16,8 +16,9 @@ namespace ArrayOfNumbers
     /// </summary>
     public partial class Form1 : Form
     {
-        private ArrayOfNumbers newArray;   // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
-        private int buttonNumber = 0;
+        private ArrayOfNumbers newArray;        // Declare a refference to ArrayOfNumbers to be used by Form1 Class Methods
+        private ArrayOfNumbers newArrayCopy;    // 
+        private int buttonNumber = 0;           //
 
         public Form1()
         {
@@ -26,8 +27,7 @@ namespace ArrayOfNumbers
 
 
         /// <summary>
-        /// OnClick Method to create array at given size. Takes size value from TextBox1. Catch error exception and output
-        /// error message if the try parse from textBox1 does not contain a number
+        /// A Method to output user directions into TextBox2 and to set buttonNumber variable to 1. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -36,31 +36,20 @@ namespace ArrayOfNumbers
 
             buttonNumber = 1;
             textBox2.Text = $"[1] Please Enter a Number for the Array Size, then click ENTER..";
-
-            //try {
-
-            //    string input = textBox1.Text;
-            //    int result = int.Parse(input);
-
-            //    if (result > 0) {
-
-            //        newArray = new ArrayOfNumbers(result);
-            //        textBox2.Text = $"New Array of size '{result}' Created.";
-            //        clearTextBox();
-
-            //    } else {
-            //        textBox2.Text = $"Please Enter a Number for the Array Size that is Greater than 0";
-            //        clearTextBox();
-            //    }
-
-
-            //} catch (Exception ex) {
-
-            //    textBox2.Text = $"Please Enter a Number for the Array Size, then press ENTER.. + {ex.Message}";
-            //    clearTextBox();
-
-            //}
   
+        }
+
+        /// <summary>
+        /// A Method to putput user directions into TextBox2 and to set the buttonNumber variable to 2.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            buttonNumber = 2;
+            textBox2.Text = $"[2] Are you sure you want to COPY the array? Type YES, then click ENTER.. ";
+
         }
 
 
@@ -82,37 +71,52 @@ namespace ArrayOfNumbers
         private void Enter_Click(object sender, EventArgs e)
         {
             switch (buttonNumber) {
+
                 case 0:
                 break;
 
-
                 case 1:
                 
-                int result = 0;
-                bool isValid ;
+                    int result = 0;
+                    bool isValid ;
 
 
-                    string input = textBox1.Text;
-                    isValid = int.TryParse(input, out result);
+                        string input = textBox1.Text;
+                        isValid = int.TryParse(input, out result);
 
-                    if (isValid && result > 0) {
+                        if (isValid && result > 0) {
+                            
+                            // If Methods do not work, remove the ArrayOfNumbers before "newArray"
+                            newArray = new ArrayOfNumbers(result);
+                            textBox2.Text = $"New array created. The array is {result} indices long.";
+                            buttonNumber = 0;
+                            clearTextBox();
 
-                        newArray = new ArrayOfNumbers(result);
-                        textBox2.Text = $"New Array Created. The Array is {result} indices long.";
-                        buttonNumber = 0;
-                        clearTextBox();
+                        } else {
 
-                    } else {
+                            textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
+                            clearTextBox();
 
-                        textBox2.Text = $"Please Enter a Number for the Array Size that is Greater than 0, then press ENTER..";
-                        clearTextBox();
-
-                    }
+                        }
 
                 break;
 
 
                 case 2:
+
+                if(textBox1.Text == "YES") {
+
+                    ArrayOfNumbers newArrayCopy = new ArrayOfNumbers(newArray.Array);
+                    textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
+                    clearTextBox();
+
+                } else {
+
+                    textBox2.Text = $"Please Enter YES to copy the array, else choose another option.";
+                    clearTextBox();
+                        
+                }
+
                 break;
 
                 default:
@@ -121,7 +125,8 @@ namespace ArrayOfNumbers
         }
 
 
-            /// Add a ReadMe Doc.. week 3 notes
+
+        /// Add a ReadMe Doc.. week 3 notes
 
 
 
@@ -146,7 +151,7 @@ namespace ArrayOfNumbers
 
 
 
-        }   // EO Form1 class
+    }   // EO Form1 class
 
 
     /// <summary>
