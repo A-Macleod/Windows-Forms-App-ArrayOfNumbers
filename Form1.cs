@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ArrayOfNumbers
 {
@@ -81,6 +82,55 @@ namespace ArrayOfNumbers
 
 
         /// <summary>
+        /// A Method to putput user directions into TextBox2 and to set the buttonNUmber variable to 5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            buttonNumber = 5;
+            textBox2.Text = $"[5] To check for Equality, you need to type two array indice Numbers. The Numbers have to be Positive. Type the Numbers seperated by a space, then press ENTER ";
+
+        }
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
         /// A Method to clear the textBox1 text on the application GUI
         /// </summary>
         private void clearTextBox()
@@ -103,28 +153,27 @@ namespace ArrayOfNumbers
                 break;
 
                 // Create Array
-                case 1: 
-                
-                    int result = 0;
-                    bool isValid ;
+                case 1:
 
-                    string input = textBox1.Text;
-                    isValid = int.TryParse(input, out result);
+                int result = 0;
+                bool isValid;
 
-                    if (isValid && result > 0) {
-                            
-                        // If Methods do not work, remove the ArrayOfNumbers before "newArray"
-                        newArray = new ArrayOfNumbers(result);
-                        textBox2.Text = $"New array created. The array is {result} indices long.";
-                        buttonNumber = 0;
-                        clearTextBox();
+                string input = textBox1.Text;
+                isValid = int.TryParse(input, out result);
 
-                    } else {
+                if (isValid && result > 0) {
 
-                        textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
-                        clearTextBox();
+                    newArray = new ArrayOfNumbers(result);
+                    textBox2.Text = $"New array created. The array is {result} indices long.";
+                    buttonNumber = 0;
+                    clearTextBox();
 
-                    }
+                } else {
+
+                    textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
+                    clearTextBox();
+
+                }
 
                 break;
 
@@ -132,27 +181,28 @@ namespace ArrayOfNumbers
                 // Copy Array
                 case 2:
 
-                    if(newArray != null) {
+                if (newArray != null) {
 
-                        if (textBox1.Text == "YES") {
+                    if (textBox1.Text == "YES") {
 
-                            newArrayCopy = new ArrayOfNumbers(newArray.Array);
-                            textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
-                            clearTextBox();
-
-                        } else {
-
-                            textBox2.Text = $"Please Enter YES to copy the array, othewise choose another option.";
-                            clearTextBox();
-
-                        }
+                        newArrayCopy = new ArrayOfNumbers(newArray.Array);
+                        textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
+                        buttonNumber = 0;
+                        clearTextBox();
 
                     } else {
 
+                        textBox2.Text = $"Please Enter YES to copy the array, othewise choose another option.";
                         clearTextBox();
-                        textBox2.Text = $"There is NO ARRAY to Copy, Please select another option.";
 
                     }
+
+                } else {
+
+                    clearTextBox();
+                    textBox2.Text = $"There is NO ARRAY to Copy, Please select another option.";
+
+                }
 
                 break;
 
@@ -160,27 +210,28 @@ namespace ArrayOfNumbers
                 // Delete Array
                 case 3:
 
-                    if(newArrayCopy != null) {
+                if (newArrayCopy != null) {
 
-                        if (textBox1.Text == "DELETE") {
+                    if (textBox1.Text == "DELETE") {
 
-                            newArrayCopy = null;
-                            textBox2.Text = $"ARRAY COPY DELETED..";
-                            clearTextBox();
-
-                        } else {
-
-                            textBox2.Text = $"Please Enter DELETE to remove the array, othewise choose another option.";
-                            clearTextBox();
-
-                        }
+                        newArrayCopy = null;
+                        textBox2.Text = $"ARRAY COPY DELETED..";
+                        buttonNumber = 0;
+                        clearTextBox();
 
                     } else {
 
+                        textBox2.Text = $"Please Enter DELETE to remove the array, othewise choose another option.";
                         clearTextBox();
-                        textBox2.Text = $"There is NO COPY to Delete, Please select another option.";
 
                     }
+
+                } else {
+
+                    clearTextBox();
+                    textBox2.Text = $"There is NO COPY to Delete, Please select another option.";
+
+                }
 
                 break;
 
@@ -188,43 +239,134 @@ namespace ArrayOfNumbers
                 // Return Largest value in Array
                 case 4:
 
-                    if (newArray != null && newArrayCopy != null) {
+                // Validate the string in textBox1
+                if (newArray != null && textBox1.Text == "ORIGINAL") {
 
-                        if (textBox1.Text == "ORIGINAL") {
+                    textBox2.Text = $"The Largest value is {newArray.ReturnLargestValue().ToString()}";
+                    buttonNumber = 0;
+                    clearTextBox();
 
-                            textBox2.Text = $"The Largest value is {newArray.ReturnLargestValue().ToString()}";
+                } else if (newArrayCopy != null && textBox1.Text == "COPY") {
+
+                    textBox2.Text = $"The Largest value is {newArrayCopy.ReturnLargestValue().ToString()}";
+                    buttonNumber = 0;
+                    clearTextBox();
+
+                } else {
+
+                    if (newArray == null && newArrayCopy == null) {
+
+                        textBox2.Text = $"There is NO ARRAY to return the Largest value. Please Create array and try again.";
+                        clearTextBox();
+                    }
+                }
+
+                break;
+
+
+                // Return true if two integer values are the same at specified index
+                case 5:
+
+                int a = 0;
+                int b = 0;
+                bool isValidA;
+                bool isValidB;
+                string[] indexString = textBox1.Text.Split(' '); // string array, split by a space. Used to store the two strings, seperated by the space, from textBox1
+
+
+                try {
+
+                    isValidA = int.TryParse(indexString[0], out a);
+                    isValidB = int.TryParse(indexString[1], out b);
+
+                    if (isValidA && isValidB) { 
+
+                        if (a > 0 && b > 0) {
+
+                            textBox2.Text = $"Are Array Indices {a} & {b} Equal Values? : {newArray.ReturnIsEqual(a, b)}.  First Value: {newArray.ReturnElementValue(a)} Second Value: {newArray.ReturnElementValue(b)} ";
+                            buttonNumber = 0;
                             clearTextBox();
 
-                        } else if (textBox1.Text == "COPY") {
+                        } else { // Error Message
 
-                            textBox2.Text = $"The Largest value is {newArrayCopy.ReturnLargestValue().ToString()}";
+                            textBox2.Text = $"Please type two Positive Numbers seperated by a space, then press ENTER.";
                             clearTextBox();
-
-                        } else {
-
-                            textBox2.Text = $"Please Enter either ORIGINAL or COPY then press ENTER, or select another option.";
 
                         }
 
-                        textBox2.Text = $"Please Create array before returning Largest or choose another option.";
+                    } else { // Error Message
 
+                        textBox2.Text = $"You need to type two Array Indice Numbers. The Numbers have to be Positive. Type the Numbers seperated by a space, then press ENTER ";
+                        clearTextBox();
                     }
 
-                //textBox2.Text = $"The Largest value in the array is : {newArray.ReturnLargestValue()} .";
+                } catch (Exception ex) { // Error Message
+
+                    textBox2.Text = $"You need to type two Positive Array Indice Numbers:  {ex.Message}";
+                    clearTextBox();
+                    textBox1.Focus();
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+                //do {
+
+
+
+                //    textBox2.Text = $"Thank you, First Index Position = {a} . " + $"Type SECOND Number, then press ENTER..";
+
+                //    if (!isValidA) { // Error Message
+
+                //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
+                //        clearTextBox();
+
+                //    }
+
+                //} while (!isValidA && a > 0);
+
+                //do {
+                //    isValidB = int.TryParse(textBox1.Text, out b); // Validate textBox1 user input, firstNumber
+                //    clearTextBox();
+
+                //    if (b > 0) {
+
+                //        textBox2.Text = $"Thank you, Second Index Position = {b} . ";
+                //        clearTextBox();
+
+                //    } else { // Error Message
+
+                //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
+                //        clearTextBox();
+
+                //    }
+
+                //} while (!isValidB);
+
+
+                //if (isValidA == true && isValidB == true) {
+
+
+                //}
+
 
                 break;
-
-
-
 
                 default:
                 break;
-            }
-        }
 
-
-
-
+                    
+            
+            } // EO switch
+        } // EO Enter_Click
 
 
         /// Add a ReadMe Doc.. week 3 notes
@@ -268,7 +410,7 @@ namespace ArrayOfNumbers
         public int[] Array 
         {
             get { return _array; }
-            //set { _array = value; }
+            set { _array = value; }
         }
 
         /// <summary>
@@ -348,6 +490,32 @@ namespace ArrayOfNumbers
 
         }
 
+        /// <summary>
+        /// A Method to Return true or false if the integer arguments are equal. 
+        /// </summary>
+        /// <param name="firstIndex"></param>
+        /// <param name="secondIndex"></param>
+        /// <returns></returns>
+        public bool ReturnIsEqual(int firstIndex, int secondIndex)
+        {
+            int a = 0;
+            int b = 0;
+            bool isEqual;
+
+            for (int i = 0; i < _array.Length; i++) {
+                a = _array[firstIndex];
+                b = _array[secondIndex];
+            }
+
+            if (a == b) {
+                isEqual = true;
+            } else {
+                isEqual = false;
+            }
+
+            return isEqual;
+
+        }
 
         /// <summary>
         /// A Method to Return the GCD of two integers. The Method takes in two integer arguments and loops through

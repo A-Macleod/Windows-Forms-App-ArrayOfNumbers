@@ -94,6 +94,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Equal";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -103,6 +104,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "GCD";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -112,6 +114,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Count";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -121,6 +124,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "Sum";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -130,6 +134,7 @@
             this.button9.TabIndex = 8;
             this.button9.Text = "Average";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // contextMenuStrip1
             // 
@@ -173,6 +178,7 @@
             this.button10.TabIndex = 14;
             this.button10.Text = "Scalar";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -182,6 +188,7 @@
             this.button11.TabIndex = 15;
             this.button11.Text = "Constant";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -191,6 +198,7 @@
             this.button12.TabIndex = 16;
             this.button12.Text = "To String";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // Form1
             // 
