@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ArrayOfNumbers
@@ -481,7 +482,7 @@ namespace ArrayOfNumbers
                 /// Return the Count of elements in the array
                 case 7:
 
-                string arrayTypeCount = textBox1.Text.Trim();
+                string arrayTypeCount = textBox1.Text.Trim(); // Trim removes whitespace at end of textBox1 input
 
                 try {
 
@@ -706,16 +707,21 @@ namespace ArrayOfNumbers
 
                         newArray.ScalarMultiply(z); 
                         textBox2.Text = $"Each Original Array Index has been Multiplied by : {z}  ";
+                        buttonNumber = 0;
                         clearTextBox();
 
                     }else if (scalarArrayValue[0] == "COPY" && newArrayCopy != null){
 
                         newArrayCopy.ScalarMultiply(z);
                         textBox2.Text = $"Each Copy Array Index has been Multiplied by : {z}  ";
+                        buttonNumber = 0;
+                        clearTextBox();
 
                     } else {
 
                         textBox2.Text = $"[5] That Array does not exist. Please create that Array type then try again.";
+                        clearTextBox();
+                        return;
                     }
 
 
@@ -727,33 +733,54 @@ namespace ArrayOfNumbers
                 break;
 
 
-
-                // Add Constant to array indice values
+                // Add Constant to array indice values, ie 3.14159 Pi
                 case 11:
 
+                string arrayTypeConstant = textBox1.Text.Trim(); // removes whitespace at end of input
+
+                try {
+
+                    // if string is not ORIGINAL and not COPY, display error
+                    if (arrayTypeConstant != "ORIGINAL" && arrayTypeConstant != "COPY") {
+
+                        textBox2.Text = $"[1] To Add a Constant to all elements in the array, type either [ORIGINAL or COPY] then press ENTER..\"";
+                        clearTextBox() ;
+                        return; // exit early
+
+                    }
+
+                    // if string is ORIGINAL or COPY and newArray is null and newArrayCopy is null, display error
+                    if (arrayTypeConstant == "ORIGINAL" && newArray == null || arrayTypeConstant == "COPY" && newArrayCopy == null) {
+
+                        textBox2.Text = $"[2] That Array does not exist. Please create that Array type then try again ";
+                        clearTextBox();
+                        return;
+                    }
 
 
+                    // if string is ORIGINAL and newArray is not null, do this
+                    if (arrayTypeConstant == "ORIGINAL" && newArray != null) {
+
+                        newArray.ReturnAddConstant();
+                        textBox2.Text = $"Each Index in the ORIGINAL array has been added with a Constant value";
+                        clearTextBox();
+
+                    }
 
 
+                    // if string is COPY and newArrayCopy is not null, do this
+                    if (arrayTypeConstant == "COPY" && newArrayCopy != null) {
 
+                        newArrayCopy.ReturnAddConstant();
+                        textBox2.Text = $"Each Index in the COPY array has been added with a Constant value";
+                        clearTextBox();
 
+                    }
 
+                } catch (Exception ex) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    textBox2.Text = $"{ex.Message}";
+                }
 
                 break;
 
