@@ -69,7 +69,7 @@ namespace ArrayOfNumbers
 
 
         /// <summary>
-        /// A Method to output user directions into TextBox2 and to set the button Number variable to 4
+        /// A Method to output user directions into TextBox2 and to set the buttonNumber variable to 4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -82,20 +82,26 @@ namespace ArrayOfNumbers
 
 
         /// <summary>
-        /// A Method to putput user directions into TextBox2 and to set the buttonNUmber variable to 5
+        /// A Method to output user directions into TextBox2 and to set the buttonNumber variable to 5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
             buttonNumber = 5;
-            textBox2.Text = $"[5] To check for Equality, you need to type two array indice Numbers. The Numbers have to be Positive. Type the Numbers seperated by a space, then press ENTER ";
+            textBox2.Text = $"[5] To check for Equality, type two array indice Numbers. The Numbers have to be Positive, then press ENTER ";
 
         }
 
-
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
+            buttonNumber = 6;
+            textBox2.Text = $"[6] To check the GCD of two values in the array, type either the [ORIGINAL or COPY] followed by two Positive indice Numbers, then press ENTER..";
 
         }
 
@@ -267,61 +273,54 @@ namespace ArrayOfNumbers
                 // Return true if two integer values are the same at specified index
                 case 5:
 
+                /// Add user prompt to select which array to work on
+
                 int a = 0;
                 int b = 0;
                 bool isValidA;
                 bool isValidB;
-                string[] indexString = textBox1.Text.Split(' '); // string array, split by a space. Used to store the two strings, seperated by the space, from textBox1
+                string[] indexString = textBox1.Text.Split(' '); // seperate the input with a space
 
 
                 try {
 
-                    isValidA = int.TryParse(indexString[0], out a);
-                    isValidB = int.TryParse(indexString[1], out b);
+                    isValidA = int.TryParse(indexString[0], out a); // return true if array index 0 is an integer, and output to int a
+                    isValidB = int.TryParse(indexString[1], out b); // return true if array index 1 is an integer, and output to int b
 
-                    if (isValidA && isValidB) { 
+                    if (isValidA && isValidB) { // if they are true, and both integers
 
-                        if (a > 0 && b > 0) {
+                        if (a > -1 && b > -1) { // if they are both greater than -1, the array starts at position 0
 
                             textBox2.Text = $"Are Array Indices {a} & {b} Equal Values? : {newArray.ReturnIsEqual(a, b)}.  First Value: {newArray.ReturnElementValue(a)} Second Value: {newArray.ReturnElementValue(b)} ";
                             buttonNumber = 0;
+                            indexString = null;
                             clearTextBox();
+                            return;
 
-                        } else { // Error Message
+                        } else { // Error Message, if there is a negative index number
 
                             textBox2.Text = $"Please type two Positive Numbers seperated by a space, then press ENTER.";
                             clearTextBox();
+                            textBox1.Focus();
 
                         }
 
-                    } else { // Error Message
+                    } else { // Error Message, if there is no integer and not valid
 
-                        textBox2.Text = $"You need to type two Array Indice Numbers. The Numbers have to be Positive. Type the Numbers seperated by a space, then press ENTER ";
+                        textBox2.Text = $"Please type two Positive Indice Numbers. Type the Numbers seperated by a space, then press ENTER ";
                         clearTextBox();
+                        textBox1.Focus();
                     }
 
-                } catch (Exception ex) { // Error Message
+                } catch (Exception ex) { // Error Message, if there is a missing argument or too many arguments (arrayOutOfBounds)
 
-                    textBox2.Text = $"You need to type two Positive Array Indice Numbers:  {ex.Message}";
+                    textBox2.Text = $"You must type two Positive Array Indice Numbers, within the size of the array:  {ex.Message}";
                     clearTextBox();
                     textBox1.Focus();
 
                 }
 
-
-
-
-
-
-
-
-
-
-
                 //do {
-
-
-
                 //    textBox2.Text = $"Thank you, First Index Position = {a} . " + $"Type SECOND Number, then press ENTER..";
 
                 //    if (!isValidA) { // Error Message
@@ -351,14 +350,106 @@ namespace ArrayOfNumbers
 
                 //} while (!isValidB);
 
-
                 //if (isValidA == true && isValidB == true) {
-
 
                 //}
 
+                break;
+
+
+                /// Return the GCD of two array index values. Taking 3 inputs from textBox1and validating these inputs.
+                case 6:
+
+                int x, y = 0;
+                bool isValidAGCD;
+                bool isValidBGCD;
+                string[] indexStringGCD = textBox1.Text.Split(' '); // seperate array input with a space
+
+
+                try {
+
+                    if (indexStringGCD.Length != 3) { // if textBox1 does not contain 3 arguments, display error
+
+                        textBox2.Text = $"[1] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
+                        textBox1.Focus();
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (indexStringGCD[0] != "ORIGINAL" && indexStringGCD[0] != "COPY") { // if index 0 does not equal this or this, display error
+
+                        textBox2.Text = $"[2] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
+                        textBox1.Focus();
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    isValidAGCD = int.TryParse(indexStringGCD[0], out x);
+                    isValidBGCD = int.TryParse(indexStringGCD[1], out y);
+
+                    if (isValidAGCD != true && isValidBGCD != true) { // if the parsed numbers are not valid, display error
+
+                        textBox2.Text = $"[3] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
+                        textBox1.Focus();
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (x < 0 && y < 0) { // if index numbers are less than 0, display error
+
+                        textBox2.Text = $"[4] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
+                        textBox1.Focus();
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (indexStringGCD[0] == "ORIGINAL" && newArray != null) { // display GCD of newArray using these indices values
+
+                        textBox2.Text = $"The Greatest Common Divisor of {newArray.ReturnElementValue(x)} and {newArray.ReturnElementValue(y)} is {newArray.GCD(x,y).ToString()}";
+                        buttonNumber = 0;
+                        clearTextBox();
+
+                    } else if (indexStringGCD[0] == "COPY" && newArrayCopy != null) { // display GCD of newArrayCopy using these indices values
+
+                        textBox2.Text = $"The Greatest Common Divisor of {newArrayCopy.ReturnElementValue(x)} and {newArrayCopy.ReturnElementValue(y)} is {newArrayCopy.GCD(x, y).ToString()}";
+                        buttonNumber = 0;
+                        clearTextBox();
+
+                    } else { // Error Message
+
+                        textBox2.Text = $"[5] That Array does not exist. Please create that Array type then try again.";
+                        clearTextBox();
+
+                    }
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"[6] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]: {ex.Message}";
+                    textBox1.Focus();
+                    clearTextBox();
+                    return;
+
+                }
 
                 break;
+
+
+                case 7:
+                break;
+
+
+
+
+
+
 
                 default:
                 break;
