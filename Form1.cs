@@ -172,11 +172,33 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[12] To see the String Formatted Representation of the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 13
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button13_Click(object sender, EventArgs e)
+        {
+            buttonNumber = 13;
+            textBox2.Text = $"[13] To Get the Value at a specific index, type [ORIGINAL or COPY] with a space, then the [INDEX NUMBER] then press ENTER..";
+        }
+
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 14
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button14_Click(object sender, EventArgs e)
+        {
+            buttonNumber = 14;
+            textBox2.Text = $"[14] To Set the Value at a specific index, type [ORIGINAL or COPY] with a space, then the [INDEX NUMBER] then the [VALUE] then press ENTER..";
+        }
+
 
         /// <summary>
         /// A Method to clear the textBox1 text on the application GUI
         /// </summary>
-        private void clearTextBox()
+        private void clearTextBox1()
         {
             textBox1.Text = null;
         }
@@ -209,12 +231,12 @@ namespace ArrayOfNumbers
                     newArray = new ArrayOfNumbers(result);
                     textBox2.Text = $"New array created. The array is {result} indices long.";
                     buttonNumber = 0;
-                    clearTextBox();
+                    clearTextBox1();
 
                 } else {
 
                     textBox2.Text = $"Please Enter a Number for the array Size that is Greater than 0, then press ENTER..";
-                    clearTextBox();
+                    clearTextBox1();
 
                 }
 
@@ -231,18 +253,18 @@ namespace ArrayOfNumbers
                         newArrayCopy = new ArrayOfNumbers(newArray.Array);
                         textBox2.Text = $"New COPY of Original Array Created. The COPIED array is {newArrayCopy.Array.Length} indices long.";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     } else {
 
                         textBox2.Text = $"Please Enter YES to copy the array, othewise choose another option.";
-                        clearTextBox();
+                        clearTextBox1();
 
                     }
 
                 } else {
 
-                    clearTextBox();
+                    clearTextBox1();
                     textBox2.Text = $"There is NO ARRAY to Copy, Please select another option.";
 
                 }
@@ -260,18 +282,18 @@ namespace ArrayOfNumbers
                         newArrayCopy = null;
                         textBox2.Text = $"ARRAY COPY DELETED..";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     } else {
 
                         textBox2.Text = $"Please Enter DELETE to remove the array, othewise choose another option.";
-                        clearTextBox();
+                        clearTextBox1();
 
                     }
 
                 } else {
 
-                    clearTextBox();
+                    clearTextBox1();
                     textBox2.Text = $"There is NO COPY to Delete, Please select another option.";
 
                 }
@@ -287,20 +309,20 @@ namespace ArrayOfNumbers
 
                     textBox2.Text = $"The Largest value is {newArray.ReturnLargestValue().ToString()}";
                     buttonNumber = 0;
-                    clearTextBox();
+                    clearTextBox1();
 
                 } else if (newArrayCopy != null && textBox1.Text == "COPY") {
 
                     textBox2.Text = $"The Largest value is {newArrayCopy.ReturnLargestValue().ToString()}";
                     buttonNumber = 0;
-                    clearTextBox();
+                    clearTextBox1();
 
                 } else {
 
                     if (newArray == null && newArrayCopy == null) {
 
                         textBox2.Text = $"There is NO ARRAY to return the Largest value. Please Create array and try again.";
-                        clearTextBox();
+                        clearTextBox1();
                     }
                 }
 
@@ -331,13 +353,13 @@ namespace ArrayOfNumbers
                             textBox2.Text = $"Are Array Indices {a} & {b} Equal Values? : {newArray.ReturnIsEqual(a, b)}.  First Value: {newArray.ReturnElementValue(a)} Second Value: {newArray.ReturnElementValue(b)} ";
                             buttonNumber = 0;
                             indexString = null;
-                            clearTextBox();
+                            clearTextBox1();
                             return;
 
                         } else { // Error Message, if there is a negative index number
 
                             textBox2.Text = $"Please type two Positive Numbers seperated by a space, then press ENTER.";
-                            clearTextBox();
+                            clearTextBox1();
                             textBox1.Focus();
 
                         }
@@ -345,14 +367,14 @@ namespace ArrayOfNumbers
                     } else { // Error Message, if there is no integer and not valid
 
                         textBox2.Text = $"Please type two Positive Indice Numbers. Type the Numbers seperated by a space, then press ENTER ";
-                        clearTextBox();
+                        clearTextBox1();
                         textBox1.Focus();
                     }
 
                 } catch (Exception ex) { // Error Message, if there is a missing argument or too many arguments (arrayOutOfBounds)
 
                     textBox2.Text = $"You must type two Positive Array Indice Numbers, within the size of the array:  {ex.Message}";
-                    clearTextBox();
+                    clearTextBox1();
                     textBox1.Focus();
 
                 }
@@ -363,7 +385,7 @@ namespace ArrayOfNumbers
                 //    if (!isValidA) { // Error Message
 
                 //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
-                //        clearTextBox();
+                //        clearTextBox1();
 
                 //    }
 
@@ -371,17 +393,17 @@ namespace ArrayOfNumbers
 
                 //do {
                 //    isValidB = int.TryParse(textBox1.Text, out b); // Validate textBox1 user input, firstNumber
-                //    clearTextBox();
+                //    clearTextBox1();
 
                 //    if (b > 0) {
 
                 //        textBox2.Text = $"Thank you, Second Index Position = {b} . ";
-                //        clearTextBox();
+                //        clearTextBox1();
 
                 //    } else { // Error Message
 
                 //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
-                //        clearTextBox();
+                //        clearTextBox1();
 
                 //    }
 
@@ -409,7 +431,7 @@ namespace ArrayOfNumbers
 
                         textBox2.Text = $"[1] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
                         textBox1.Focus();
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -419,7 +441,7 @@ namespace ArrayOfNumbers
 
                         textBox2.Text = $"[2] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
                         textBox1.Focus();
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -432,7 +454,7 @@ namespace ArrayOfNumbers
 
                         textBox2.Text = $"[3] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
                         textBox1.Focus();
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -442,7 +464,7 @@ namespace ArrayOfNumbers
 
                         textBox2.Text = $"[4] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
                         textBox1.Focus();
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -452,18 +474,18 @@ namespace ArrayOfNumbers
 
                         textBox2.Text = $"The Greatest Common Divisor of {newArray.ReturnElementValue(x)} and {newArray.ReturnElementValue(y)} is {newArray.GCD(x,y).ToString()}";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     } else if (indexStringGCD[0] == "COPY" && newArrayCopy != null) { // display GCD of newArrayCopy using these indices values
 
                         textBox2.Text = $"The Greatest Common Divisor of {newArrayCopy.ReturnElementValue(x)} and {newArrayCopy.ReturnElementValue(y)} is {newArrayCopy.GCD(x, y).ToString()}";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     } else { // Error Message
 
                         textBox2.Text = $"[5] That Array does not exist. Please create that Array type then try again.";
-                        clearTextBox();
+                        clearTextBox1();
 
                     }
 
@@ -471,7 +493,7 @@ namespace ArrayOfNumbers
 
                     textBox2.Text = $"[6] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]: {ex.Message}";
                     textBox1.Focus();
-                    clearTextBox();
+                    clearTextBox1();
                     return;
 
                 }
@@ -489,7 +511,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeCount != "ORIGINAL" && arrayTypeCount != "COPY") { // if wrong user input, display error
 
                         textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to Count the total amount of array Indices";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -498,7 +520,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeCount == "ORIGINAL" && newArray == null) { // if array does not exist, display error
 
                         textBox2.Text = $"[2] Please create a new array, or select another operation";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -507,7 +529,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeCount == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
 
                         textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -515,7 +537,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeCount == "ORIGINAL") {
 
                         textBox2.Text = $"The Index Count for ORIGINAL array is : {newArray.ReturnCount().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -524,7 +546,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeCount == "COPY") {
 
                         textBox2.Text = $"The Index Count for COPY array is : {newArrayCopy.ReturnCount().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -550,7 +572,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeSum != "ORIGINAL" && arrayTypeSum != "COPY") { // if wrong user input, display error
 
                         textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to Count the Sum of all elements in the array";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -559,7 +581,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeSum == "ORIGINAL" && newArray == null) { // if array does not exist, display error
 
                         textBox2.Text = $"[2] Please create a new array, or select another operation";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -568,7 +590,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeSum == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
 
                         textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -576,7 +598,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeSum == "ORIGINAL") {
 
                         textBox2.Text = $"The Sum Total for ORIGINAL array is : {newArray.ReturnSum().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -585,7 +607,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeSum == "COPY") {
 
                         textBox2.Text = $"The Index Count for COPY array is : {newArrayCopy.ReturnSum().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -609,7 +631,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeAverage != "ORIGINAL" && arrayTypeAverage != "COPY") { // if wrong user input, display error
 
                         textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to see the Average of all elements in the array";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -618,7 +640,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeAverage == "ORIGINAL" && newArray == null) { // if array does not exist, display error
 
                         textBox2.Text = $"[2] Please create a new array, or select another operation";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -627,7 +649,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeAverage == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
 
                         textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -635,7 +657,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeAverage == "ORIGINAL") {
 
                         textBox2.Text = $"The Average for ORIGINAL array is : {newArray.ReturnAverage().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -644,7 +666,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeAverage == "COPY") {
 
                         textBox2.Text = $"The Average for COPY array is : {newArrayCopy.ReturnAverage().ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -670,7 +692,7 @@ namespace ArrayOfNumbers
                     if (scalarArrayValue.Length != 2) { // Take in exactly 2 arguments, if not error. We want the Array name and the Scalar string value 
 
                         textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
-                        clearTextBox();
+                        clearTextBox1();
                         return; // exit early
 
                     }
@@ -679,7 +701,7 @@ namespace ArrayOfNumbers
                     if (scalarArrayValue[0] != "ORIGINAL" && scalarArrayValue[0] != "COPY") {
 
                         textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -689,7 +711,7 @@ namespace ArrayOfNumbers
                     if (!isValidZ) {    // if false, display error
 
                         textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -698,7 +720,7 @@ namespace ArrayOfNumbers
                     if (z <= 0) { // if z is less or equal to zero, display error. We don't want to multiply by zero.
 
                         textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER.. ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -708,19 +730,19 @@ namespace ArrayOfNumbers
                         newArray.ScalarMultiply(z); 
                         textBox2.Text = $"Each Original Array Index has been Multiplied by : {z}  ";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     }else if (scalarArrayValue[0] == "COPY" && newArrayCopy != null){
 
                         newArrayCopy.ScalarMultiply(z);
                         textBox2.Text = $"Each Copy Array Index has been Multiplied by : {z}  ";
                         buttonNumber = 0;
-                        clearTextBox();
+                        clearTextBox1();
 
                     } else {
 
                         textBox2.Text = $"[5] That Array does not exist. Please create that Array type then try again.";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -744,7 +766,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeConstant != "ORIGINAL" && arrayTypeConstant != "COPY") {
 
                         textBox2.Text = $"[1] To Add a Constant to all elements in the array, type either [ORIGINAL or COPY] then press ENTER..\"";
-                        clearTextBox() ;
+                        clearTextBox1() ;
                         return; // exit early
 
                     }
@@ -753,7 +775,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeConstant == "ORIGINAL" && newArray == null || arrayTypeConstant == "COPY" && newArrayCopy == null) {
 
                         textBox2.Text = $"[2] That Array does not exist. Please create that Array type then try again ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -763,7 +785,7 @@ namespace ArrayOfNumbers
 
                         newArray.ReturnAddConstant();
                         textBox2.Text = $"Each Index in the ORIGINAL array has been added with a Constant value";
-                        clearTextBox();
+                        clearTextBox1();
 
                     }
 
@@ -773,7 +795,7 @@ namespace ArrayOfNumbers
 
                         newArrayCopy.ReturnAddConstant();
                         textBox2.Text = $"Each Index in the COPY array has been added with a Constant value";
-                        clearTextBox();
+                        clearTextBox1();
 
                     }
 
@@ -795,7 +817,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeToString != "ORIGINAL" && arrayTypeToString != "COPY") { // if wrong user input, display error
 
                         textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to see the string formatted representation of the array";
-                        clearTextBox();
+                        clearTextBox1();
                         return; // exit early
 
                     }
@@ -804,7 +826,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeToString == "ORIGINAL" && newArray == null) { // if array does not exist, display error
 
                         textBox2.Text = $"[2] Please create a new array, or select another operation";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
 
                     }
@@ -813,7 +835,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeToString == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
 
                         textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
-                        clearTextBox();
+                        clearTextBox1();
                         return;
                     }
 
@@ -821,7 +843,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeToString == "ORIGINAL") {
 
                         textBox2.Text = $"The string formatted representation of ORIGINAL array is : {newArray.ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -830,7 +852,7 @@ namespace ArrayOfNumbers
                     if (arrayTypeToString == "COPY") {
 
                         textBox2.Text = $"The string formatted representation of COPY array is : {newArrayCopy.ToString()}";
-                        clearTextBox();
+                        clearTextBox1();
                         buttonNumber = 0;
 
                     }
@@ -843,6 +865,112 @@ namespace ArrayOfNumbers
 
                 break;
 
+
+                // Get the value of a specific Index in a specific Array
+                case 13:
+
+                string[] getStrings = textBox1.Text.Split(' '); // seperating the string with a space
+                bool isValidGet = false;
+                int index = 0;
+                //newArray.Array.GetValue(1);   
+
+                
+                try {
+
+                    if (getStrings.Length != 2) { // if string arguments are not exactly 2 (we want the Array name and the Index number)
+
+                        textBox2.Text = $"[1] error message";
+                        clearTextBox1();
+                        return; // exit early
+                    }
+
+
+                    if (getStrings[0] != "ORIGINAL" && getStrings[0] != "COPY") { // if string is not equal to either of these, display error
+
+                        textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] with a Positive [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+                    }
+
+                    
+                    isValidGet = int.TryParse(getStrings[1], out index); 
+                    index = index - 1 ;
+                    if (!isValidGet) { // if string array[1] can not be parsed, not a number, display error
+
+                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+
+                    }
+
+
+                    if(index < 0) { // if index is less than zero, display error. The array is initialized at position 0
+
+                        textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+
+                    }
+
+
+                    //if (index > newArray.Array.Length) {
+
+                    //    textBox2.Text = $"[5] error message";
+                    //    clearTextBox1();
+                    //    return;
+                    //}
+
+                    
+                    //if(index > newArrayCopy.Array.Length) {
+
+                    //    textBox2.Text = $"[5] error message";
+                    //    clearTextBox1();
+                    //    return;
+                    //}
+
+
+
+
+                    if (getStrings[0] == "ORIGINAL" && newArray != null && index >= 0 && index < newArray.Array.Length) {
+
+                        textBox2.Text = $"The ORIGINAL array value at Index {index} is : {newArray.Array.GetValue(index)}. The Array is Initialized at Index Zero.";
+                        clearTextBox1();
+
+                    } else if (getStrings[0] == "COPY" && newArrayCopy != null && index >= 0 && index < newArrayCopy.Array.Length) {
+
+                        textBox2.Text = $"The COPY array value at Index {index} is : {newArrayCopy.Array.GetValue(index)} The Array is Initialized at Index Zero.";
+                        clearTextBox1();
+
+                    } else { // Error message
+
+                        textBox2.Text = $"[6] Please make sure the Positive Index Number you want to check is no Larger than the Array Length and the Array Exists";
+                        clearTextBox1();
+                        return ;
+                    }
+                        
+
+                } catch (Exception ex) { // Error message
+
+                    textBox1.Text = $"{ex.Message}";
+                }
+
+                break;
+
+
+                // Set the Value of an Index in a specific Array
+                case 14:
+
+                try {
+
+                } catch (Exception ex) {
+
+                    throw;
+                }
+                break;
+
+
+
+
                 default:
                 break;
 
@@ -850,6 +978,7 @@ namespace ArrayOfNumbers
             
             } // EO switch
         } // EO Enter_Click
+
 
 
         /// Add a ReadMe Doc.. week 3 notes
@@ -892,8 +1021,31 @@ namespace ArrayOfNumbers
         /// </summary>
         public int[] Array 
         {
-            get { return _array; }
-            set { _array = value; }
+            get 
+            {
+                if (_array != null) {
+
+                    return _array;
+
+                } else {
+
+                    throw new Exception("Array does not exist");
+
+                }
+                
+            }
+            set 
+            {
+                if (_array != null) {
+
+                    _array = value;
+
+                } else {
+
+                    throw new Exception("Array does not exist");
+                }
+                
+            }
         }
 
         /// <summary>
