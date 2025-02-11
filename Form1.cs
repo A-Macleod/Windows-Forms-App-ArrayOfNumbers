@@ -105,34 +105,70 @@ namespace ArrayOfNumbers
 
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 7
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
-
+            buttonNumber = 7;
+            textBox2.Text = $"[7] To check the Count of the array indices, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 8
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button8_Click(object sender, EventArgs e)
         {
-
+            buttonNumber = 8;
+            textBox2.Text = $"[8] To check the Sum of all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 9
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button9_Click(object sender, EventArgs e)
         {
-
+            buttonNumber = 9;
+            textBox2.Text = $"[9] To check the Average of all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button10_Click(object sender, EventArgs e)
-        {
-
+        {   
+            buttonNumber = 10;
+            textBox2.Text = $"[10] To Multiply all elements in the array by a Scalar value, type either [ORIGINAL or COPY] and [SCALAR NUMBER] then press ENTER.."; 
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 11
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button11_Click(object sender, EventArgs e)
         {
-
+            buttonNumber = 11;
+            textBox2.Text = $"[11] To Add a Constant to all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+        /// <summary>
+        /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 12
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button12_Click(object sender, EventArgs e)
         {
-
+            buttonNumber = 12;
+            textBox2.Text = $"[12] To see the String Formatted Representation of the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
 
@@ -401,7 +437,7 @@ namespace ArrayOfNumbers
                     }
 
 
-                    if (x < 0 && y < 0) { // if index numbers are less than 0, display error
+                    if (x < 0 || y < 0) { // if index numbers are less than 0, display error
 
                         textBox2.Text = $"[4] Please type Array [ORIGINAL or COPY] and [Index Number #1] and [Index Number #2]";
                         textBox1.Focus();
@@ -442,14 +478,343 @@ namespace ArrayOfNumbers
                 break;
 
 
+                /// Return the Count of elements in the array
                 case 7:
+
+                string arrayTypeCount = textBox1.Text.Trim();
+
+                try {
+
+                    if (arrayTypeCount != "ORIGINAL" && arrayTypeCount != "COPY") { // if wrong user input, display error
+
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to Count the total amount of array Indices";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeCount == "ORIGINAL" && newArray == null) { // if array does not exist, display error
+
+                        textBox2.Text = $"[2] Please create a new array, or select another operation";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeCount == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
+
+                        textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
+                        clearTextBox();
+                        return;
+                    }
+
+
+                    if (arrayTypeCount == "ORIGINAL") {
+
+                        textBox2.Text = $"The Index Count for ORIGINAL array is : {newArray.ReturnCount().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                    if (arrayTypeCount == "COPY") {
+
+                        textBox2.Text = $"The Index Count for COPY array is : {newArrayCopy.ReturnCount().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"{ex.Message}";
+                    return;
+
+                }
+
+                break;
+
+
+                /// Display the sum of all elements in the array
+                case 8:
+
+                    string arrayTypeSum = textBox1.Text.Trim();
+
+                try {
+
+                    if (arrayTypeSum != "ORIGINAL" && arrayTypeSum != "COPY") { // if wrong user input, display error
+
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to Count the Sum of all elements in the array";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeSum == "ORIGINAL" && newArray == null) { // if array does not exist, display error
+
+                        textBox2.Text = $"[2] Please create a new array, or select another operation";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeSum == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
+
+                        textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
+                        clearTextBox();
+                        return;
+                    }
+
+
+                    if (arrayTypeSum == "ORIGINAL") {
+
+                        textBox2.Text = $"The Sum Total for ORIGINAL array is : {newArray.ReturnSum().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                    if (arrayTypeSum == "COPY") {
+
+                        textBox2.Text = $"The Index Count for COPY array is : {newArrayCopy.ReturnSum().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"{ex.Message}";
+                }
+
+                break;
+
+
+                /// Display the Average value of the elements in the array
+                case 9:
+
+                    string arrayTypeAverage = textBox1.Text.Trim();
+
+                try {
+
+                    if (arrayTypeAverage != "ORIGINAL" && arrayTypeAverage != "COPY") { // if wrong user input, display error
+
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to see the Average of all elements in the array";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeAverage == "ORIGINAL" && newArray == null) { // if array does not exist, display error
+
+                        textBox2.Text = $"[2] Please create a new array, or select another operation";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeAverage == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
+
+                        textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
+                        clearTextBox();
+                        return;
+                    }
+
+
+                    if (arrayTypeAverage == "ORIGINAL") {
+
+                        textBox2.Text = $"The Average for ORIGINAL array is : {newArray.ReturnAverage().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                    if (arrayTypeAverage == "COPY") {
+
+                        textBox2.Text = $"The Average for COPY array is : {newArrayCopy.ReturnAverage().ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"{ex.Message}";
+                }
+
+                break;
+
+
+                // Multiplies each element in the array by the given scalar value
+                case 10:
+                
+                int z = 0;
+                bool isValidZ = false;
+                string[] scalarArrayValue = textBox1.Text.Split(' '); // sepperates array values with a space
+
+                try {
+
+                    if (scalarArrayValue.Length != 2) { // Take in exactly 2 arguments, if not error. We want the Array name and the Scalar string value 
+
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
+                        clearTextBox();
+                        return; // exit early
+
+                    }
+
+
+                    if (scalarArrayValue[0] != "ORIGINAL" && scalarArrayValue[0] != "COPY") {
+
+                        textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    isValidZ = int.TryParse(scalarArrayValue[1], out z); // try parse the string value in the array, output to variable z, if not isValid is false
+                    if (!isValidZ) {    // if false, display error
+
+                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER..";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (z <= 0) { // if z is less or equal to zero, display error. We don't want to multiply by zero.
+
+                        textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] then [Postive Scalar Numeric Value] then press ENTER.. ";
+                        clearTextBox();
+                        return;
+                    }
+
+
+                    if (scalarArrayValue[0] == "ORIGINAL" && newArray != null) {
+
+                        newArray.ScalarMultiply(z); 
+                        textBox2.Text = $"Each Original Array Index has been Multiplied by : {z}  ";
+                        clearTextBox();
+
+                    }else if (scalarArrayValue[0] == "COPY" && newArrayCopy != null){
+
+                        newArrayCopy.ScalarMultiply(z);
+                        textBox2.Text = $"Each Copy Array Index has been Multiplied by : {z}  ";
+
+                    } else {
+
+                        textBox2.Text = $"[5] That Array does not exist. Please create that Array type then try again.";
+                    }
+
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"{ex.Message}";
+                }
+
                 break;
 
 
 
+                // Add Constant to array indice values
+                case 11:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                break;
+
+
+                // Displays the string formatted representation of the array 
+                case 12:
+
+                string arrayTypeToString = textBox1.Text.Trim(); // This 'removes' spaces at the end of textBox1
+
+                try {
+
+                    if (arrayTypeToString != "ORIGINAL" && arrayTypeToString != "COPY") { // if wrong user input, display error
+
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] to see the string formatted representation of the array";
+                        clearTextBox();
+                        return; // exit early
+
+                    }
+
+
+                    if (arrayTypeToString == "ORIGINAL" && newArray == null) { // if array does not exist, display error
+
+                        textBox2.Text = $"[2] Please create a new array, or select another operation";
+                        clearTextBox();
+                        return;
+
+                    }
+
+
+                    if (arrayTypeToString == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
+
+                        textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
+                        clearTextBox();
+                        return;
+                    }
+
+
+                    if (arrayTypeToString == "ORIGINAL") {
+
+                        textBox2.Text = $"The string formatted representation of ORIGINAL array is : {newArray.ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                    if (arrayTypeToString == "COPY") {
+
+                        textBox2.Text = $"The string formatted representation of COPY array is : {newArrayCopy.ToString()}";
+                        clearTextBox();
+                        buttonNumber = 0;
+
+                    }
+
+
+                } catch (Exception ex) {
+
+                    textBox2.Text = $"{ex.Message}";
+                }
+
+                break;
 
                 default:
                 break;
@@ -496,7 +861,7 @@ namespace ArrayOfNumbers
         private int[] _array;    // Private field integer Array 
 
         /// <summary>
-        /// Property to get the array object
+        /// Property to get and set the array object
         /// </summary>
         public int[] Array 
         {
@@ -516,7 +881,7 @@ namespace ArrayOfNumbers
             _array = new int[sizeOfArray];
 
             for (int i = 0; i < sizeOfArray; i++) { // Loop through and set each index value to 0
-                _array[i] = 0;
+                _array[i] = 10;
             }
 
         }
@@ -696,34 +1061,39 @@ namespace ArrayOfNumbers
         /// <returns>The value of the array as a string</returns>
         public override string ToString()
         {
-            string[] value = { " ," };
+            string value = "";
 
             for (int i = 0; i < _array.Length; i++) {
-                value[_array.Length] += _array[i].ToString();   
+                value += _array[i].ToString();  
+                
+                if (i < _array.Length -1) { // Add a comma to the value variable (inbetween the array index values) if not the last index
+                    value += ", ";
+                }
+
             }
 
-            return value.ToString();
+            return value;
 
         }
 
 
         /// <summary>
-        /// A Method to Return the value of each element in the array when multiplied by a scalar value
+        /// A Method to multiply each array index value by a scalar value
         /// </summary>
         /// <param name="scalarValue">The number to multiply by</param>
-        /// <returns>The new value of the array index</returns>
-        public int ReturnScalarMultiply(int scalarValue)
+        public void ScalarMultiply(int scalarValue)
         {
             // v = k x v
-            int value = 0;
+            //int value = 0;
+            //array = _array;
 
             for(int i = 0; i < _array.Length; i++) {   // Loop through and multiply each index value by the scalar value 
                 _array[i] *= scalarValue;
-                value = _array[i];
+                //value = _array[i];
 
             }
 
-            return value;
+             //value; // maybe remove return and make Method void. Use ToString Method to return index values
 
         }
 
