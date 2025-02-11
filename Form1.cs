@@ -912,7 +912,6 @@ namespace ArrayOfNumbers
 
                     }
 
-
                     //if (index > newArray.Array.Length) {
 
                     //    textBox2.Text = $"[5] error message";
@@ -927,9 +926,6 @@ namespace ArrayOfNumbers
                     //    clearTextBox1();
                     //    return;
                     //}
-
-
-
 
                     if (getStrings[0] == "ORIGINAL" && newArray != null && index >= 0 && index < newArray.Array.Length) {
 
@@ -948,7 +944,6 @@ namespace ArrayOfNumbers
                         return ;
                     }
                         
-
                 } catch (Exception ex) { // Error message
 
                     textBox1.Text = $"{ex.Message}";
@@ -962,48 +957,87 @@ namespace ArrayOfNumbers
 
                 try {
 
+                    string[] setStrings = textBox1.Text.Split(' '); // seperate the strings in the array with a space
+                    bool isValidSIndex = false;
+                    bool isValidSValue = false;
+                    int sIndex = 0;
+                    int sValue = 0;
+
+                    if (setStrings.Length != 3) { // if string arguments are not 3 (we want the Array name and the Index number and Value)
+
+                        textBox2.Text = $"[1] error message";
+                        clearTextBox1();
+                        return; // exit early
+                    }
+
+
+                    if (setStrings[0] != "ORIGINAL" && setStrings[0] != "COPY") { // if string is not equal to either of these, display error
+
+                        textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] with a Positive [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+                    }
+
+
+                    isValidSIndex = int.TryParse(setStrings[1], out sIndex);
+                    isValidSValue = int.TryParse(setStrings[2], out sValue);
+                    sIndex = sIndex - 1; // set the Index Number to zero-based indexing
+
+                    if (!isValidSIndex) { // if string array[1] can not be parsed, not a number, display error
+
+                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] with a Positve Numeric [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+
+                    }
+
+
+                    if (!isValidSIndex) { // if string array[2] can not be parsed, not a number, display error
+
+                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] with a Positve Numeric [Value] then press Enter";
+                        clearTextBox1();
+                        return;
+
+                    }
+
+
+                    if (sIndex < 0) { // if index is less than zero, display error. The array is initialized at position 0
+
+                        textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter";
+                        clearTextBox1();
+                        return;
+
+                    }
+
+                    if (setStrings[0] == "ORIGINAL" && newArray != null && sIndex >= 0 && sIndex < newArray.Array.Length) {
+
+                        textBox2.Text = $"The ORIGINAL array value at Index {sIndex} is : {newArray.Array.GetValue(sIndex)}. The New Value is {newArray.SetElementValue(sIndex, sValue)}.";
+                        clearTextBox1();
+
+                    } else if (setStrings[0] == "COPY" && newArrayCopy != null && sIndex >= 0 && sIndex < newArrayCopy.Array.Length) {
+
+                        textBox2.Text = $"The COPY array value at Index {sIndex} is : {newArrayCopy.Array.GetValue(sIndex)} The New Value is {newArrayCopy.SetElementValue(sIndex, sValue)}.";
+                        clearTextBox1();
+
+                    } else { // Error message
+
+                        textBox2.Text = $"[6] Please make sure the Positive Index Number you want to check is no Larger than the Array Length and the Array Exists";
+                        clearTextBox1();
+                        return;
+                    }
+
                 } catch (Exception ex) {
 
-                    throw;
+                    textBox2.Text = $"{ex.Message}";
                 }
+
                 break;
-
-
-
 
                 default:
                 break;
-
-                    
-            
+    
             } // EO switch
         } // EO Enter_Click
-
-
-
-        /// Add a ReadMe Doc.. week 3 notes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }   // EO Form1 class
@@ -1017,34 +1051,17 @@ namespace ArrayOfNumbers
         private int[] _array;    // Private field integer Array 
 
         /// <summary>
-        /// Property to get and set the array object
+        /// Property to Get and Set. Arrays dont access indices through getter and setter properties.
         /// </summary>
         public int[] Array 
         {
             get 
             {
-                if (_array != null) {
-
-                    return _array;
-
-                } else {
-
-                    throw new Exception("Array does not exist");
-
-                }
-                
+                return _array;
             }
             set 
             {
-                if (_array != null) {
-
-                    _array = value;
-
-                } else {
-
-                    throw new Exception("Array does not exist");
-                }
-                
+                _array = value;     
             }
         }
 
@@ -1100,9 +1117,9 @@ namespace ArrayOfNumbers
         /// </summary>
         /// <param name="indexNumber">The number of the index</param>
         /// <param name="value">The value you want to insert</param>
-        public void SetElementValue(int indexNumber, int value)
+        public int SetElementValue(int indexNumber, int value)
         {
-            _array[indexNumber] = value;
+            return _array[indexNumber] = value;
         }
 
 
