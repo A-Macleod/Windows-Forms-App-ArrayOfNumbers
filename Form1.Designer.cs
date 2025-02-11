@@ -153,7 +153,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(57, 193);
+            this.textBox2.Location = new System.Drawing.Point(57, 209);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -204,7 +204,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(526, 156);
+            this.button13.Location = new System.Drawing.Point(529, 164);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(75, 23);
             this.button13.TabIndex = 17;
@@ -214,7 +214,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(610, 156);
+            this.button14.Location = new System.Drawing.Point(610, 164);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(75, 23);
             this.button14.TabIndex = 18;

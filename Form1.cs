@@ -94,6 +94,7 @@ namespace ArrayOfNumbers
 
         }
 
+
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 6
         /// </summary>
@@ -105,6 +106,7 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[6] To check the GCD of two values in the array, type either the [ORIGINAL or COPY] followed by two Positive indice Numbers, then press ENTER..";
 
         }
+        
 
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 7
@@ -117,6 +119,7 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[7] To check the Count of the array indices, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 8
         /// </summary>
@@ -127,6 +130,7 @@ namespace ArrayOfNumbers
             buttonNumber = 8;
             textBox2.Text = $"[8] To check the Sum of all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
+
 
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 9
@@ -139,6 +143,7 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[9] To check the Average of all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 10
         /// </summary>
@@ -149,6 +154,7 @@ namespace ArrayOfNumbers
             buttonNumber = 10;
             textBox2.Text = $"[10] To Multiply all elements in the array by a Scalar value, type either [ORIGINAL or COPY] and [SCALAR NUMBER] then press ENTER.."; 
         }
+
 
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 11
@@ -161,6 +167,7 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[11] To Add a Constant to all elements in the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 12
         /// </summary>
@@ -172,6 +179,7 @@ namespace ArrayOfNumbers
             textBox2.Text = $"[12] To see the String Formatted Representation of the array, type either [ORIGINAL or COPY] then press ENTER..";
         }
 
+
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 13
         /// </summary>
@@ -182,6 +190,7 @@ namespace ArrayOfNumbers
             buttonNumber = 13;
             textBox2.Text = $"[13] To Get the Value at a specific index, type [ORIGINAL or COPY] with a space, then the [INDEX NUMBER] then press ENTER..";
         }
+
 
         /// <summary>
         /// A Method to output user direction into TextBox2 and to set the buttonNumber variable to 14
@@ -379,44 +388,10 @@ namespace ArrayOfNumbers
 
                 }
 
-                //do {
-                //    textBox2.Text = $"Thank you, First Index Position = {a} . " + $"Type SECOND Number, then press ENTER..";
-
-                //    if (!isValidA) { // Error Message
-
-                //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
-                //        clearTextBox1();
-
-                //    }
-
-                //} while (!isValidA && a > 0);
-
-                //do {
-                //    isValidB = int.TryParse(textBox1.Text, out b); // Validate textBox1 user input, firstNumber
-                //    clearTextBox1();
-
-                //    if (b > 0) {
-
-                //        textBox2.Text = $"Thank you, Second Index Position = {b} . ";
-                //        clearTextBox1();
-
-                //    } else { // Error Message
-
-                //        textBox2.Text = $"Please type a Positive Number and press Enter, or choose another operation.";
-                //        clearTextBox1();
-
-                //    }
-
-                //} while (!isValidB);
-
-                //if (isValidA == true && isValidB == true) {
-
-                //}
-
                 break;
 
 
-                /// Return the GCD of two array index values. Taking 3 inputs from textBox1and validating these inputs.
+                /// Return the GCD of two array index values. Taking 3 inputs from textBox1 and validating these inputs.
                 case 6:
 
                 int x, y = 0;
@@ -834,7 +809,7 @@ namespace ArrayOfNumbers
 
                     if (arrayTypeToString == "COPY" && newArrayCopy == null) { // if array copy does not exist, display error
 
-                        textBox2.Text = $"[3] Please create a new array copy, or select another operation ";
+                        textBox2.Text = $"[3] Please create a new array copy, or select another operation";
                         clearTextBox1();
                         return;
                     }
@@ -842,7 +817,7 @@ namespace ArrayOfNumbers
 
                     if (arrayTypeToString == "ORIGINAL") {
 
-                        textBox2.Text = $"The string formatted representation of ORIGINAL array is : {newArray.ToString()}";
+                        textBox2.Text = $"The string formatted representation of ORIGINAL array is :  {newArray.ToString()}";
                         clearTextBox1();
                         buttonNumber = 0;
 
@@ -851,7 +826,7 @@ namespace ArrayOfNumbers
 
                     if (arrayTypeToString == "COPY") {
 
-                        textBox2.Text = $"The string formatted representation of COPY array is : {newArrayCopy.ToString()}";
+                        textBox2.Text = $"The string formatted representation of COPY array is :  {newArrayCopy.ToString()}";
                         clearTextBox1();
                         buttonNumber = 0;
 
@@ -879,7 +854,7 @@ namespace ArrayOfNumbers
 
                     if (getStrings.Length != 2) { // if string arguments are not exactly 2 (we want the Array name and the Index number)
 
-                        textBox2.Text = $"[1] error message";
+                        textBox2.Text = $"[1] Please type either [ORIGINAL or COPY] with a Positive [Index Number] then press Enter..";
                         clearTextBox1();
                         return; // exit early
                     }
@@ -887,7 +862,7 @@ namespace ArrayOfNumbers
 
                     if (getStrings[0] != "ORIGINAL" && getStrings[0] != "COPY") { // if string is not equal to either of these, display error
 
-                        textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] with a Positive [Index Number] then press Enter";
+                        textBox2.Text = $"[2] Please type either [ORIGINAL or COPY] with a Positive [Index Number] then press Enter..";
                         clearTextBox1();
                         return;
                     }
@@ -897,7 +872,7 @@ namespace ArrayOfNumbers
                     index = index - 1 ;
                     if (!isValidGet) { // if string array[1] can not be parsed, not a number, display error
 
-                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter";
+                        textBox2.Text = $"[3] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter..";
                         clearTextBox1();
                         return;
 
@@ -906,26 +881,12 @@ namespace ArrayOfNumbers
 
                     if(index < 0) { // if index is less than zero, display error. The array is initialized at position 0
 
-                        textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] with a Positve [Index Number] then press Enter";
+                        textBox2.Text = $"[4] Please type either [ORIGINAL or COPY] with a Positve Numeric [Index Number] then press Enter..";
                         clearTextBox1();
                         return;
 
                     }
 
-                    //if (index > newArray.Array.Length) {
-
-                    //    textBox2.Text = $"[5] error message";
-                    //    clearTextBox1();
-                    //    return;
-                    //}
-
-                    
-                    //if(index > newArrayCopy.Array.Length) {
-
-                    //    textBox2.Text = $"[5] error message";
-                    //    clearTextBox1();
-                    //    return;
-                    //}
 
                     if (getStrings[0] == "ORIGINAL" && newArray != null && index >= 0 && index < newArray.Array.Length) {
 
@@ -1044,7 +1005,7 @@ namespace ArrayOfNumbers
 
 
     /// <summary>
-    /// Represents a fixed size collection that can change its stored numbers and perform mathematic operations  
+    /// Represents a fixed size collection that can modify its stored numbers and perform mathematic operations  
     /// </summary>
     public class ArrayOfNumbers
     {
@@ -1142,6 +1103,7 @@ namespace ArrayOfNumbers
 
         }
 
+
         /// <summary>
         /// A Method to Return true or false if the integer arguments are equal. 
         /// </summary>
@@ -1168,6 +1130,7 @@ namespace ArrayOfNumbers
             return isEqual;
 
         }
+
 
         /// <summary>
         /// A Method to Return the GCD of two integers. The Method takes in two integer arguments and loops through
@@ -1313,7 +1276,6 @@ namespace ArrayOfNumbers
             return value;
 
         }
-
 
 
     }   //  EO ArrayOfNumbers class
